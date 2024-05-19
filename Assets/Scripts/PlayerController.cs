@@ -6,16 +6,18 @@ public class PlayerController : MonoBehaviour
 {
     Vector2 moveInput;
     [SerializeField] float moveSpeed = 15f;
-        
-
+    private Animator _animator;
+    [SerializeField] float jumpSpeed = 15.0f;
      private Rigidbody2D _rigidbody2D;
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
     void Update()
     {
         Run();
+        FlipSprite();
     }
     void OnMove(InputValue value)
     {
@@ -27,22 +29,31 @@ public class PlayerController : MonoBehaviour
         // 0,1 -> lên
         //0,-1 -> xuống
     }
-    void OnJump()
+    void OnJump(InputValue value)
     {
-        Debug.Log("Jump");
+        if (value.isPressed)
+        {
+            _rigidbody2D.velocity = new Vector2(x: 0, y: jumpSpeed);
+        }
     }
     void Run()
     {
         Vector2 moveVelocity = new Vector2(x:moveInput.x*moveSpeed,_rigidbody2D.velocity.y);
         _rigidbody2D.velocity = moveVelocity;
+        bool playerHasHorizontalSpeed = Mathf.Abs(moveInput.x) > Mathf.Epsilon;
+        _animator.SetBool(name:"isRunning", playerHasHorizontalSpeed);
     }
     // abs : giá trị tuyệt đối
     // sign : đấu của giá trị
     // epsion : giá trị nhỏ nhất có thể so sánh
     //xoay hướng nhân vật theo chuyển động
-    void Flip()
+    void FlipSprite()
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(_rigidbody2D.velocity.x) > Mathf.Epsilon;
+        if(playerHasHorizontalSpeed)
+        {
+            transform.localScale = new Vector2(x: Mathf.Sign(_rigidbody2D.velocity.x), y: 1f);
+        }
     }
 
 }
