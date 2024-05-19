@@ -5,11 +5,16 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     Vector2 moveInput;
+    [SerializeField] float moveSpeed = 5f;
 
-  
+     private Rigidbody2D _rigidbody2D;
+    private void Start()
+    {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+    }
     void Update()
     {
-        
+        Run();
     }
     void OnMove(InputValue value)
     {
@@ -24,6 +29,10 @@ public class PlayerController : MonoBehaviour
     void OnJump()
     {
         Debug.Log("Jump");
+    }
+    void Run()
+    {
+        _rigidbody2D.velocity = new Vector2(moveInput.x, 0f);
     }
 
 }
