@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
@@ -9,17 +10,21 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     [SerializeField] float jumpSpeed = 15.0f;
      private Rigidbody2D _rigidbody2D;
-    CapsuleCollider2D _CapsuleCollider2D;
+    [SerializeField] float climbSpeed = 5;
+    CapsuleCollider2D _capsuleCollider2D;
+    private float gravityScaleAtStart;
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _CapsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        gravityScaleAtStart = _rigidbody2D.gravityScale;
     }
     void Update()
     {
         Run();
         FlipSprite();
+        climbLadder();
     }
     void OnMove(InputValue value)
     {
@@ -33,7 +38,7 @@ public class PlayerController : MonoBehaviour
     }
     void OnJump(InputValue value)
     {
-        var isTouchingGround = _CapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"));
+        var isTouchingGround = _capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"));
         if (!isTouchingGround) return;
         if (value.isPressed)
         {
@@ -60,5 +65,23 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector2(x: Mathf.Sign(_rigidbody2D.velocity.x), y: 1f);
         }
     }
+    //leo thang
+    void climbLadder()
+    {
+        var isTouchingLadder = _capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing"));
+        if(!isTouchingLadder)
+        {
+            _animator.SetBool("isClimbing", false);
+            _rigidbody2D.gravityScale = gravityScaleAtStart;
+            return;
+        }
+        var climbVelocity = new Vector2(_rigidbody2D.velocity.x, y:moveInput.y * climbSpeed);
+        _rigidbody2D.velocity = climbVelocity;
 
+        //điểu khiển animation cầu thang
+        var playerHasVerticalSpeed = Mathf.Abs(moveInput.y) > Mathf.Epsilon;
+        _animator.SetBool("isClimbing",true);
+        //tắt gravity
+        _rigidbody2D.gravityScale = 0;
+    }
 }
