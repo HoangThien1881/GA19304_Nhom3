@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     Vector2 moveInput;
-    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float moveSpeed = 15f;
         
 
      private Rigidbody2D _rigidbody2D;
@@ -33,8 +33,16 @@ public class PlayerController : MonoBehaviour
     }
     void Run()
     {
-        Vector2 moveVelocity = new Vector2(x:moveInput.x, y: moveInput.y);
+        Vector2 moveVelocity = new Vector2(x:moveInput.x*moveSpeed,_rigidbody2D.velocity.y);
         _rigidbody2D.velocity = moveVelocity;
+    }
+    // abs : giá trị tuyệt đối
+    // sign : đấu của giá trị
+    // epsion : giá trị nhỏ nhất có thể so sánh
+    //xoay hướng nhân vật theo chuyển động
+    void Flip()
+    {
+        bool playerHasHorizontalSpeed = Mathf.Abs(_rigidbody2D.velocity.x) > Mathf.Epsilon;
     }
 
 }
