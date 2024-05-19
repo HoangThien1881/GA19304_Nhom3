@@ -42,9 +42,11 @@ public class PlayerController : MonoBehaviour
         if (!isTouchingGround) return;
         if (value.isPressed)
         {
+            _animator.SetBool("isJumping",true);
             _rigidbody2D.velocity = new Vector2(x: 0, y: jumpSpeed);
 
         }
+        _animator.SetBool("isJumping", false);
     }
     void Run()
     {
