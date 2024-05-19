@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     Vector2 moveInput;
     [SerializeField] float moveSpeed = 5f;
+        
 
      private Rigidbody2D _rigidbody2D;
     private void Start()
@@ -32,7 +33,8 @@ public class PlayerController : MonoBehaviour
     }
     void Run()
     {
-        _rigidbody2D.velocity = new Vector2(moveInput.x, 0f);
+        Vector2 moveVelocity = new Vector2(x:moveInput.x, y: moveInput.y);
+        _rigidbody2D.velocity = moveVelocity;
     }
 
 }
