@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float climbSpeed = 5;
     CapsuleCollider2D _capsuleCollider2D;
     private float gravityScaleAtStart;
+    public GameObject _bulletPrefabs;
+    public Transform _gunTransform;
+    [SerializeField] private bool isMovingRight = true;
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour
         Run();
         FlipSprite();
         climbLadder();
+        Fire();
     }
     void OnMove(InputValue value)
     {
@@ -85,5 +89,26 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("isClimbing",true);
         //tắt gravity
         _rigidbody2D.gravityScale = 0;
+    }
+    private void Fire()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            //tạo viên đạn tại vị trí gun
+            var oneBullet = Instantiate(_bulletPrefabs, _gunTransform.position, Quaternion.identity);
+            //cho viên đạn bay theo hướng nhân vật
+            if (isMovingRight == true)
+            {
+                oneBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(30f, 0);
+            }
+            else
+            {
+                oneBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-30f, 0);
+            }
+
+            Destroy(oneBullet, 1f);
+
+
+        }
     }
 }

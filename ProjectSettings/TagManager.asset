@@ -53,6 +53,9 @@ TagManager:
   - name: Climbing
     uniqueID: 1738104191
     locked: 0
+  - name: Arrow
+    uniqueID: 3985643021
+    locked: 0
   - name: Player
     uniqueID: 3169862263
     locked: 0
