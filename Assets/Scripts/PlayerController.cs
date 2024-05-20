@@ -100,15 +100,21 @@ public class PlayerController : MonoBehaviour
             if (isMovingRight == true)
             {
                 oneBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(30f, 0);
+                _animator.SetBool("isShooting",oneBullet);
             }
             else
             {
                 oneBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-30f, 0);
+            
             }
-
+          
             Destroy(oneBullet, 1f);
+           
+
 
 
         }
+        
     }
+   
 }
