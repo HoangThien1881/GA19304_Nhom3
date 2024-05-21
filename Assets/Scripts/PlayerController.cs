@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
             if (isMovingRight == true)
             {
                 oneBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(30f, 0);
-                _animator.SetBool("isShooting",oneBullet);
+                _animator.SetBool("isShooting",true);
             }
             else
             {
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
             }
           
             Destroy(oneBullet, 1f);
-           
+            _animator.SetBool("isShooting",false);
 
 
 
