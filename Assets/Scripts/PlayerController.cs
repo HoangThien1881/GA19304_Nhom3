@@ -17,6 +17,13 @@ public class PlayerController : MonoBehaviour
     private float gravityScaleAtStart;
     //public GameObject _bulletPrefabs;
     //public Transform _gunTransform;
+
+
+
+    public float dodgeSpeed = 4f; // Tốc độ khi dodge (lộn)
+    public float dodgeDirection = 0.5f; // Thời gian dodge
+    private float dodgeTime; // Thời gian còn lại của dodge
+    private bool isDodging = false; // Trạng thái dodge (đang dodge hay không)
     [SerializeField] private bool isMovingRight = true;
 
     public GameObject arrowPrefab; // Prefab của mũi tên
@@ -38,7 +45,7 @@ public class PlayerController : MonoBehaviour
         climbLadder();
         //Fire();
         Shoot();
-        
+        Dodge();
     }
     void OnMove(InputValue value)
     {
@@ -49,6 +56,28 @@ public class PlayerController : MonoBehaviour
         //-1,0 -> move trái
         // 0,1 -> lên
         //0,-1 -> xuống
+    }
+
+    void Dodge()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dodgeTime <= 0) // Khi nhấn phím Shift và thời gian dodge đã hết
+        {
+            _animator.SetBool("isDodging", true); // Kích hoạt animation dodge
+            moveSpeed += dodgeSpeed; // Tăng tốc độ di chuyển
+            dodgeTime = dodgeDirection; // Đặt lại thời gian dodge
+            isDodging = true; // Đánh dấu trạng thái đang dodge
+        }
+
+        if (dodgeTime <= 0 && isDodging == true) // Khi thời gian dodge hết và đang trong trạng thái dodge
+        {
+            _animator.SetBool("isDodging", false); // Tắt animation dodge
+            moveSpeed -= dodgeSpeed; // Trả lại tốc độ di chuyển ban đầu
+            isDodging = false; // Đặt lại trạng thái dodge
+        }
+        else
+        {
+            dodgeTime -= Time.deltaTime; // Giảm thời gian dodge theo thời gian thực
+        }
     }
     void OnJump(InputValue value)
     {
@@ -134,6 +163,7 @@ public class PlayerController : MonoBehaviour
             Invoke(nameof(FireArrow), 0.1f); // Gọi hàm FireArrow sau một khoảng thời gian ngắn để khớp với animation
         }
     }
+
 
     void FireArrow()
     {
