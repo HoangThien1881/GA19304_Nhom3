@@ -12,23 +12,33 @@ public class PlayerController : MonoBehaviour
      private Rigidbody2D _rigidbody2D;
     [SerializeField] float climbSpeed = 5;
     CapsuleCollider2D _capsuleCollider2D;
+
+    BoxCollider2D _boxCollider2D;
     private float gravityScaleAtStart;
-    public GameObject _bulletPrefabs;
-    public Transform _gunTransform;
+    //public GameObject _bulletPrefabs;
+    //public Transform _gunTransform;
     [SerializeField] private bool isMovingRight = true;
+
+    public GameObject arrowPrefab; // Prefab của mũi tên
+    public Transform bowPosition; // Vị trí cung để sinh ra mũi tên
+    public float arrowSpeed = 10f; // Tốc độ của mũi tên
+    public float arrowLifetime = 1f; // Thời gian tồn tại của mũi tên
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         gravityScaleAtStart = _rigidbody2D.gravityScale;
+        _boxCollider2D = GetComponent<BoxCollider2D>();
     }
     void Update()
     {
         Run();
         FlipSprite();
         climbLadder();
-        Fire();
+        //Fire();
+        Shoot();
+        
     }
     void OnMove(InputValue value)
     {
@@ -90,31 +100,71 @@ public class PlayerController : MonoBehaviour
         //tắt gravity
         _rigidbody2D.gravityScale = 0;
     }
-    private void Fire()
+    //private void Fire()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.F))
+    //    {
+    //        //tạo viên đạn tại vị trí gun
+    //        var oneBullet = Instantiate(_bulletPrefabs, _gunTransform.position, Quaternion.identity);
+    //        //cho viên đạn bay theo hướng nhân vật
+    //        if (isMovingRight == true)
+    //        {
+    //            oneBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(30f, 0);
+    //            _animator.SetBool("isShooting", true);
+    //        }
+    //        else
+    //        {
+    //            oneBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-30f, 0);
+
+    //        }
+
+    //        Destroy(oneBullet, 1f);
+    //        _animator.SetBool("isShooting", false);
+
+
+
+    //    }
+
+    //}
+    void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F)) // Khi nhấn phím F
         {
-            //tạo viên đạn tại vị trí gun
-            var oneBullet = Instantiate(_bulletPrefabs, _gunTransform.position, Quaternion.identity);
-            //cho viên đạn bay theo hướng nhân vật
-            if (isMovingRight == true)
-            {
-                oneBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(30f, 0);
-                _animator.SetBool("isShooting",true);
-            }
-            else
-            {
-                oneBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-30f, 0);
-            
-            }
-          
-            Destroy(oneBullet, 1f);
-            _animator.SetBool("isShooting",false);
-
-
-
+            _animator.SetTrigger("isShooting"); // Kích hoạt animation bắn cung
+            Invoke(nameof(FireArrow), 0.1f); // Gọi hàm FireArrow sau một khoảng thời gian ngắn để khớp với animation
         }
-        
     }
-   
+
+    void FireArrow()
+    {
+        if (bowPosition == null) // Kiểm tra bowPosition đã được gán chưa
+        {
+            Debug.LogError("Bow Position chưa được gán trong Inspector.");
+            return;
+        }
+
+        GameObject arrow = Instantiate(arrowPrefab, bowPosition.position, Quaternion.identity); // Tạo mũi tên từ prefab
+
+        Rigidbody2D arrowRb = arrow.GetComponent<Rigidbody2D>(); // Lấy thành phần Rigidbody2D của mũi tên
+
+        arrowRb.velocity = new Vector2(transform.localScale.x * arrowSpeed, 0); // Điều chỉnh hướng bay của mũi tên dựa trên hướng của nhân vật
+
+        // Kiểm tra hướng của nhân vật và flip mũi tên nếu cần
+        Vector3 arrowScale = arrow.transform.localScale;
+        if (transform.localScale.x < 0)
+        {
+            arrowScale.x = -Mathf.Abs(arrowScale.x); // Flip mũi tên nếu nhân vật đang quay về bên trái
+        }
+        else
+        {
+            arrowScale.x = Mathf.Abs(arrowScale.x); // Đảm bảo mũi tên không bị flip nếu nhân vật đang quay về bên phải
+        }
+        arrow.transform.localScale = arrowScale;
+
+        _animator.SetTrigger("isStaying"); // Đảm bảo nhân vật trở về trạng thái đứng im
+
+        Destroy(arrow, arrowLifetime); // Hủy mũi tên sau khoảng thời gian
+    }
+
+
 }
