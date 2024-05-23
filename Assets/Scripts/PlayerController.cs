@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
         //Fire();
         Shoot();
         Dodge();
+    
     }
     void OnMove(InputValue value)
     {
