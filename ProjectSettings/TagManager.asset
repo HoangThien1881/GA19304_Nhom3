@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - Climbing
   - Player
   - NAM
-  - 
+  - Coin
   - 
   - 
   - 
@@ -64,4 +65,7 @@ TagManager:
     locked: 0
   - name: nam
     uniqueID: 2559433675
+    locked: 0
+  - name: Coin
+    uniqueID: 2315910441
     locked: 0

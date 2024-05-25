@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 public class PlayerController : MonoBehaviour
 {
     Vector2 moveInput;
     [SerializeField] float moveSpeed = 15f;
     private Animator _animator;
     [SerializeField] float jumpSpeed = 15.0f;
-     private Rigidbody2D _rigidbody2D;
+    private Rigidbody2D _rigidbody2D;
     [SerializeField] float climbSpeed = 5;
     CapsuleCollider2D _capsuleCollider2D;
 
@@ -30,6 +31,18 @@ public class PlayerController : MonoBehaviour
     public Transform bowPosition; // Vị trí cung để sinh ra mũi tên
     public float arrowSpeed = 10f; // Tốc độ của mũi tên
     public float arrowLifetime = 1f; // Thời gian tồn tại của mũi tên
+
+
+    [SerializeField] TextMeshProUGUI _scoreText;
+    public int v = 0;
+    private static int _score = 0;
+    [SerializeField] private AudioClip _coinCollectSFX;
+
+
+
+
+
+
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -37,6 +50,7 @@ public class PlayerController : MonoBehaviour
         _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         gravityScaleAtStart = _rigidbody2D.gravityScale;
         _boxCollider2D = GetComponent<BoxCollider2D>();
+        _scoreText.text = _score.ToString();
     }
     void Update()
     {
@@ -46,7 +60,7 @@ public class PlayerController : MonoBehaviour
         //Fire();
         Shoot();
         Dodge();
-    
+
     }
     void OnMove(InputValue value)
     {
@@ -86,7 +100,7 @@ public class PlayerController : MonoBehaviour
         if (!isTouchingGround) return;
         if (value.isPressed)
         {
-            _animator.SetBool("isJumping",true);
+            _animator.SetBool("isJumping", true);
             _rigidbody2D.velocity = new Vector2(x: 0, y: jumpSpeed);
 
         }
@@ -94,10 +108,10 @@ public class PlayerController : MonoBehaviour
     }
     void Run()
     {
-        Vector2 moveVelocity = new Vector2(x:moveInput.x*moveSpeed,_rigidbody2D.velocity.y);
+        Vector2 moveVelocity = new Vector2(x: moveInput.x * moveSpeed, _rigidbody2D.velocity.y);
         _rigidbody2D.velocity = moveVelocity;
         bool playerHasHorizontalSpeed = Mathf.Abs(moveInput.x) > Mathf.Epsilon;
-        _animator.SetBool(name:"isRunning", playerHasHorizontalSpeed);
+        _animator.SetBool(name: "isRunning", playerHasHorizontalSpeed);
     }
     // abs : giá trị tuyệt đối
     // sign : đấu của giá trị
@@ -106,7 +120,7 @@ public class PlayerController : MonoBehaviour
     void FlipSprite()
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(_rigidbody2D.velocity.x) > Mathf.Epsilon;
-        if(playerHasHorizontalSpeed)
+        if (playerHasHorizontalSpeed)
         {
             transform.localScale = new Vector2(x: Mathf.Sign(_rigidbody2D.velocity.x), y: 1f);
         }
@@ -115,18 +129,18 @@ public class PlayerController : MonoBehaviour
     void climbLadder()
     {
         var isTouchingLadder = _capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing"));
-        if(!isTouchingLadder)
+        if (!isTouchingLadder)
         {
             _animator.SetBool("isClimbing", false);
             _rigidbody2D.gravityScale = gravityScaleAtStart;
             return;
         }
-        var climbVelocity = new Vector2(_rigidbody2D.velocity.x, y:moveInput.y * climbSpeed);
+        var climbVelocity = new Vector2(_rigidbody2D.velocity.x, y: moveInput.y * climbSpeed);
         _rigidbody2D.velocity = climbVelocity;
 
         //điểu khiển animation cầu thang
         var playerHasVerticalSpeed = Mathf.Abs(moveInput.y) > Mathf.Epsilon;
-        _animator.SetBool("isClimbing",true);
+        _animator.SetBool("isClimbing", true);
         //tắt gravity
         _rigidbody2D.gravityScale = 0;
     }
@@ -196,6 +210,19 @@ public class PlayerController : MonoBehaviour
 
         Destroy(arrow, arrowLifetime); // Hủy mũi tên sau khoảng thời gian
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            Destroy(other.gameObject);
+            //phát ra tiếng ăn đồng xu 
+            AudioSource.PlayClipAtPoint(_coinCollectSFX, Vector3.zero);
+            // cộng điểm 
+            _score += v;
+            _scoreText.text = _score.ToString();
+
+        }
 
 
+    }
 }
