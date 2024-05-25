@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Climbing
   - Player
-  - 
+  - NAM
   - 
   - 
   - 
@@ -61,4 +61,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3129234787
+    locked: 0
+  - name: nam
+    uniqueID: 2559433675
     locked: 0
