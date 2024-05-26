@@ -50,3 +50,9 @@ TagManager:
   - name: Block
     uniqueID: 1724808005
     locked: 0
+  - name: Quai
+    uniqueID: 2201545777
+    locked: 0
+  - name: Coin
+    uniqueID: 404200843
+    locked: 0
