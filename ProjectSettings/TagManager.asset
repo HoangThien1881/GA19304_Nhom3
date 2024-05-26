@@ -16,8 +16,8 @@ TagManager:
   - Player
   - NAM
   - Coin
-  - 
-  - 
+  - Monster
+  - Exit
   - 
   - 
   - 
@@ -68,4 +68,10 @@ TagManager:
     locked: 0
   - name: Coin
     uniqueID: 2315910441
+    locked: 0
+  - name: Monster
+    uniqueID: 2213144007
+    locked: 0
+  - name: Exit
+    uniqueID: 921491233
     locked: 0
