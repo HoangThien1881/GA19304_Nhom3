@@ -43,6 +43,21 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Background
+<<<<<<< HEAD
+    uniqueID: 4221440219
+    locked: 0
+  - name: Warter
+    uniqueID: 347287649
+    locked: 0
+  - name: Block
+    uniqueID: 1724808005
+    locked: 0
+  - name: Quai
+    uniqueID: 2201545777
+    locked: 0
+  - name: Coin
+    uniqueID: 404200843
+=======
     uniqueID: 3716498439
     locked: 0
   - name: Water
@@ -74,4 +89,5 @@ TagManager:
     locked: 0
   - name: Exit
     uniqueID: 921491233
+>>>>>>> main
     locked: 0
