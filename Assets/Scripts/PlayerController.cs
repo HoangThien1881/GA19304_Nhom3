@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public float dodgeDirection = 0.5f; // Thời gian dodge
     private float dodgeTime; // Thời gian còn lại của dodge
     private bool isDodging = false; // Trạng thái dodge (đang dodge hay không)
-    [SerializeField] private bool isMovingRight = true;
+    //[SerializeField] private bool isMovingRight = true;
 
     public GameObject arrowPrefab; // Prefab của mũi tên
     public Transform bowPosition; // Vị trí cung để sinh ra mũi tên
