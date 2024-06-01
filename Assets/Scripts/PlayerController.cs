@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip _coinCollectSFX;
 
 
-
+    private bool isAlive = true;
 
 
 
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         //Fire();
         Shoot();
         Dodge();
-        
+        dead();
 
 
     }
@@ -226,5 +226,15 @@ public class PlayerController : MonoBehaviour
         }
 
 
+    }
+    void dead()
+    {
+        var isTouchingEnemy = _capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Monster","Trap"));
+        if(isTouchingEnemy)
+        {
+            isAlive = false;
+            _animator.SetTrigger("Dying");
+            _rigidbody2D.velocity = new Vector2(0, 0);
+        }
     }
 }
