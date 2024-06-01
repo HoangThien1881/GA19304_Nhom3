@@ -22,12 +22,5 @@ public class EnemyMove : MonoBehaviour
         //xoay hướng
         transform.localScale = new Vector2(-(Mathf.Sign(_rigBody2D.velocity.x)), 1f);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Monster"))
-        {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
-    }
+    
 }
