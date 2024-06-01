@@ -19,8 +19,8 @@ TagManager:
   - Coin
   - Monster
   - Exit
-  - 
-  - 
+  - Trap
+  - Latern
   - 
   - 
   - 
@@ -75,4 +75,10 @@ TagManager:
     locked: 0
   - name: Exit
     uniqueID: 921491233
+    locked: 0
+  - name: Trap
+    uniqueID: 3883497851
+    locked: 0
+  - name: Latern
+    uniqueID: 3442580939
     locked: 0
