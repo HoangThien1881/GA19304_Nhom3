@@ -21,7 +21,7 @@ TagManager:
   - Exit
   - Trap
   - Latern
-  - 
+  - Object
   - 
   - 
   - 
@@ -61,9 +61,6 @@ TagManager:
   - name: Player
     uniqueID: 3169862263
     locked: 0
-  - name: UI
-    uniqueID: 3129234787
-    locked: 0
   - name: nam
     uniqueID: 2559433675
     locked: 0
@@ -81,4 +78,10 @@ TagManager:
     locked: 0
   - name: Latern
     uniqueID: 3442580939
+    locked: 0
+  - name: Object
+    uniqueID: 1118289385
+    locked: 0
+  - name: UI
+    uniqueID: 3129234787
     locked: 0
