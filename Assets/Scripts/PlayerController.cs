@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     Vector2 moveInput;
@@ -285,5 +286,10 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1;
         pauseMenuScreen.SetActive(false);
     }
-
+    public void GotoMenu()
+    {
+        SceneManager.LoadScene("Menu");
+        Time.timeScale = 1;
+    }
+    
 }

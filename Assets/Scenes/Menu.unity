@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 9373328}
   - component: {fileID: 9373327}
   - component: {fileID: 9373326}
+  - component: {fileID: 9373329}
+  - component: {fileID: 9373330}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -204,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9373327}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9373330}
+        m_TargetAssemblyTypeName: Play, Assembly-CSharp
+        m_MethodName: PlayGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9373327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +257,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9373324}
   m_CullTransparentMesh: 1
+--- !u!114 &9373329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9373324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!114 &9373330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9373324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f97c0a03bc3cfc4a94501d5e5d31c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &96983124
 GameObject:
   m_ObjectHideFlags: 0
@@ -5837,7 +5878,7 @@ GameObject:
   - component: {fileID: 1486693245}
   - component: {fileID: 1486693244}
   m_Layer: 5
-  m_Name: Play Button (2)
+  m_Name: Help
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
