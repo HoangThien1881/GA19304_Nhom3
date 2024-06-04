@@ -782,6 +782,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: quai Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4409436081696017547, guid: eb98fe61bddcebc47829e59955c80eff, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6534976066552281911, guid: eb98fe61bddcebc47829e59955c80eff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.33
@@ -852,12 +856,20 @@ PrefabInstance:
       value: -1825071329
       objectReference: {fileID: 0}
     - target: {fileID: 2776618761587061966, guid: 341074158cee7964ea2b35f6d85c79e8, type: 3}
-      propertyPath: moveSpeed
+      propertyPath: jumpSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2776618761587061966, guid: 341074158cee7964ea2b35f6d85c79e8, type: 3}
+      propertyPath: moveSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3552072342180785351, guid: 341074158cee7964ea2b35f6d85c79e8, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552072342180785351, guid: 341074158cee7964ea2b35f6d85c79e8, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7557672141830411511, guid: 341074158cee7964ea2b35f6d85c79e8, type: 3}
       propertyPath: m_LocalScale.x
@@ -1183,6 +1195,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 756473528946094582, guid: 6b182df7f43f6c14fb333eb191d2977e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 756473528946094582, guid: 6b182df7f43f6c14fb333eb191d2977e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2038433011
+      objectReference: {fileID: 0}
     - target: {fileID: 2002765495847432912, guid: 6b182df7f43f6c14fb333eb191d2977e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.506565
@@ -1227,10 +1247,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
-    - target: {fileID: 9214683350790414969, guid: 6b182df7f43f6c14fb333eb191d2977e, type: 3}
-      propertyPath: m_TagString
-      value: Coin
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1247,6 +1263,10 @@ PrefabInstance:
     - target: {fileID: 4409436081696017547, guid: eb98fe61bddcebc47829e59955c80eff, type: 3}
       propertyPath: m_Name
       value: quai Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409436081696017547, guid: eb98fe61bddcebc47829e59955c80eff, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6534976066552281911, guid: eb98fe61bddcebc47829e59955c80eff, type: 3}
       propertyPath: m_LocalScale.x
@@ -1330,7 +1350,7 @@ GameObject:
   - component: {fileID: 1673910725}
   - component: {fileID: 1673910724}
   - component: {fileID: 1673910723}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99001,6 +99021,10 @@ PrefabInstance:
     - target: {fileID: 4409436081696017547, guid: eb98fe61bddcebc47829e59955c80eff, type: 3}
       propertyPath: m_Name
       value: quai
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409436081696017547, guid: eb98fe61bddcebc47829e59955c80eff, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6534976066552281911, guid: eb98fe61bddcebc47829e59955c80eff, type: 3}
       propertyPath: m_LocalScale.x

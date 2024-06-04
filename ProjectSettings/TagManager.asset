@@ -9,11 +9,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
-  - 
+  - Player
   - 
   - 
   - 
@@ -53,4 +53,7 @@ TagManager:
     locked: 0
   - name: Quai
     uniqueID: 4119836211
+    locked: 0
+  - name: Coins
+    uniqueID: 2256534285
     locked: 0
