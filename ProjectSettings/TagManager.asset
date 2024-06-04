@@ -48,3 +48,9 @@ TagManager:
   - name: Block
     uniqueID: 1472955309
     locked: 0
+  - name: Player
+    uniqueID: 2469895967
+    locked: 0
+  - name: Quai
+    uniqueID: 4119836211
+    locked: 0
