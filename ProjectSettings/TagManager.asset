@@ -57,3 +57,6 @@ TagManager:
   - name: Coins
     uniqueID: 2256534285
     locked: 0
+  - name: dan
+    uniqueID: 74362607
+    locked: 0
