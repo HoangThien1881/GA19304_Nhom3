@@ -33,12 +33,12 @@ public class Quai : MonoBehaviour
         Vector2 scale = transform.localScale;
         if (transform.position.x <= positionLeft)
         {
-            moveDiretion = 5;
+            moveDiretion = 1;
             scale.x = -5;
         }
         else if (transform.position.x >= positionRight)
         {
-            moveDiretion = -5;
+            moveDiretion = -1;
             scale.x = 5;
         }
         transform.localScale = scale;

@@ -31,12 +31,12 @@ public class Boss : MonoBehaviour
         Vector2 scale = transform.localScale;
         if (transform.position.x <= positionLeft)
         {
-            moveDiretion = 15;
+            moveDiretion = 1;
             scale.x = -15;
         }
         else if (transform.position.x >= positionRight)
         {
-            moveDiretion = -15;
+            moveDiretion = -1;
             scale.x = 15;
         }
         transform.localScale = scale;
