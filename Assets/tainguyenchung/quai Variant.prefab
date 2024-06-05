@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: quai Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 266389420516984705, guid: e34a821df39313a4e83c2f6085eaf441, type: 3}
+      propertyPath: m_TagString
+      value: Quai
+      objectReference: {fileID: 0}
     - target: {fileID: 7220386339686543421, guid: e34a821df39313a4e83c2f6085eaf441, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -26,11 +30,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7220386339686543421, guid: e34a821df39313a4e83c2f6085eaf441, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 66.88
+      value: 98.01
       objectReference: {fileID: 0}
     - target: {fileID: 7220386339686543421, guid: e34a821df39313a4e83c2f6085eaf441, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.76
+      value: 24.63
       objectReference: {fileID: 0}
     - target: {fileID: 7220386339686543421, guid: e34a821df39313a4e83c2f6085eaf441, type: 3}
       propertyPath: m_LocalPosition.z
@@ -125,8 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  positionLeft: 0
-  positionRight: 0
+  positionLeft: 90
+  positionRight: 103
 --- !u!58 &-1198493524703087363
 CircleCollider2D:
   m_ObjectHideFlags: 0

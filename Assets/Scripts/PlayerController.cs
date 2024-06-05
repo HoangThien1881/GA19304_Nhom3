@@ -4,6 +4,8 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using System.Threading;
+using System.Transactions;
 public class PlayerController : MonoBehaviour
 {
     Vector2 moveInput;
@@ -38,6 +40,11 @@ public class PlayerController : MonoBehaviour
     private static int _score = 0;
     [SerializeField] private AudioClip _coinCollectSFX;
 
+    [SerializeField] TextMeshProUGUI Mautext;
+    public int M = 3;
+    public static int Mau = 3;
+
+
 
 
 
@@ -51,6 +58,7 @@ public class PlayerController : MonoBehaviour
         gravityScaleAtStart = _rigidbody2D.gravityScale;
         _boxCollider2D = GetComponent<BoxCollider2D>();
         _scoreText.text = _score.ToString();
+        Mautext.text = Mautext.ToString();
     }
     void Update()
     {
@@ -224,7 +232,15 @@ public class PlayerController : MonoBehaviour
             _scoreText.text = _score.ToString();
 
         }
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            Mau -= M;
+            Mautext.text = Mautext.ToString();
+        }
 
 
     }
+    
+
+
 }
