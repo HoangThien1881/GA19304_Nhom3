@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip _coinCollectSFX;
 
 
-    private bool isAlive = true;
+   
     public int health = 2
         ;
     public Image[] hearts;
@@ -242,7 +242,7 @@ public class PlayerController : MonoBehaviour
             _scoreText.text = _score.ToString();
 
         }
-        if (other.gameObject.CompareTag("Monster"))
+        if (other.gameObject.CompareTag("Monster")  || other.gameObject.CompareTag("Trap"))
         {
             health--;
             if (health < 0)
