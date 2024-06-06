@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip _coinCollectSFX;
 
     [SerializeField] TextMeshProUGUI Mautext;
-    public int M = 3;
-    public static int Mau = 3;
+    public int M = 1;
+    public static float Mau = 3;
 
 
 
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         gravityScaleAtStart = _rigidbody2D.gravityScale;
         _boxCollider2D = GetComponent<BoxCollider2D>();
         _scoreText.text = _score.ToString();
-        Mautext.text = Mautext.ToString();
+        Mautext.text = Mau.ToString();
     }
     void Update()
     {
@@ -232,15 +232,24 @@ public class PlayerController : MonoBehaviour
             _scoreText.text = _score.ToString();
 
         }
-        if (other.gameObject.CompareTag("Coin"))
-        {
-            Mau -= M;
-            Mautext.text = Mautext.ToString();
-        }
+        
+        
 
 
     }
-    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Quai"))
+        {
+            Mau -= M;
+            Mautext.text = Mau.ToString();
+        }
+        if (Mau <= 0)
+        {
+            Destroy(this.gameObject);
+
+        }
+    }
 
 
 }
