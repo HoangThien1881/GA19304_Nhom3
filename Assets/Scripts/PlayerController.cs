@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     public Sprite emptyHeart;
 
 
-
+    public GameObject dead;
     public GameObject pauseMenuScreen;
     private void Start()
     {
@@ -249,6 +249,7 @@ public class PlayerController : MonoBehaviour
             {
 
                 gameObject.SetActive(false);
+                dead.SetActive(true);
             }
             else
             {
