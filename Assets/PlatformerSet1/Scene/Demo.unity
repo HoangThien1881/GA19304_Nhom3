@@ -120,6 +120,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD:Assets/PlatformerSet1/Scene/Demo.unity
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +285,9 @@ Transform:
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1714672566
+=======
+--- !u!1 &1942314734
+>>>>>>> main:Assets/New Folder/bb.unity
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -366,6 +370,7 @@ Transform:
 --- !u!1 &1943483911
 GameObject:
   m_ObjectHideFlags: 0
+<<<<<<< HEAD:Assets/PlatformerSet1/Scene/Demo.unity
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -443,3 +448,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+  m_Roots:
+  - {fileID: 1942314737}
+>>>>>>> main:Assets/New Folder/bb.unity
