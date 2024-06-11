@@ -5,8 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coin
+<<<<<<< HEAD
   - dan
   - Quai
+=======
+  - Monster
+  - Trap
+  - Boss
+  - Bullet
+>>>>>>> main
   layers:
   - Default
   - TransparentFX
@@ -16,6 +23,7 @@ TagManager:
   - UI
   - 
   - Player
+<<<<<<< HEAD
   - Climbing
   - 
   - 
@@ -24,6 +32,16 @@ TagManager:
   - 
   - 
   - 
+=======
+  - NAM
+  - Coin
+  - Monster
+  - Exit
+  - Trap
+  - Latern
+  - Object
+  - Boss
+>>>>>>> main
   - 
   - 
   - 
@@ -45,19 +63,40 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Background
+<<<<<<< HEAD
     uniqueID: 3371512535
     locked: 0
   - name: Block
     uniqueID: 1472955309
+=======
+    uniqueID: 3716498439
+    locked: 0
+  - name: Water
+    uniqueID: 3410398489
+    locked: 0
+  - name: Platform
+    uniqueID: 2607406215
+    locked: 0
+  - name: Climbing
+    uniqueID: 1738104191
+    locked: 0
+  - name: Arrow
+    uniqueID: 3985643021
+>>>>>>> main
     locked: 0
   - name: Player
     uniqueID: 2469895967
     locked: 0
+<<<<<<< HEAD
   - name: Quai
     uniqueID: 4119836211
     locked: 0
   - name: Coins
     uniqueID: 2256534285
+=======
+  - name: nam
+    uniqueID: 2559433675
+>>>>>>> main
     locked: 0
   - name: dan
     uniqueID: 74362607
@@ -65,6 +104,26 @@ TagManager:
   - name: bay
     uniqueID: 2526938221
     locked: 0
+<<<<<<< HEAD
   - name: Ui
     uniqueID: 3265157073
+=======
+  - name: Exit
+    uniqueID: 921491233
+    locked: 0
+  - name: Trap
+    uniqueID: 3883497851
+    locked: 0
+  - name: Latern
+    uniqueID: 3442580939
+    locked: 0
+  - name: Object
+    uniqueID: 1118289385
+    locked: 0
+  - name: UI
+    uniqueID: 3129234787
+    locked: 0
+  - name: Boss
+    uniqueID: 4002388299
+>>>>>>> main
     locked: 0
