@@ -53,6 +53,12 @@ public class PlayerController : MonoBehaviour
 
     public GameObject dead;
     public GameObject pauseMenuScreen;
+
+
+    [SerializeField] TextMeshProUGUI __scoreText;
+    public int vv = 0;
+    private static int __score = 0;
+    [SerializeField] private AudioClip __coinCollectSFX;
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -61,6 +67,7 @@ public class PlayerController : MonoBehaviour
         gravityScaleAtStart = _rigidbody2D.gravityScale;
         _boxCollider2D = GetComponent<BoxCollider2D>();
         _scoreText.text = _score.ToString();
+        __scoreText.text = __score.ToString();
     }
     void Update()
     {
@@ -240,6 +247,9 @@ public class PlayerController : MonoBehaviour
             // cộng điểm 
             _score += v;
             _scoreText.text = _score.ToString();
+            __score += vv;
+            __scoreText.text = __score.ToString();
+
 
         }
         if (other.gameObject.CompareTag("Monster")  || other.gameObject.CompareTag("Trap"))

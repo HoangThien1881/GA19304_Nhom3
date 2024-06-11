@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class BossControl : MonoBehaviour
 {
-    private float _blood = 100f;
+    private float _blood = 500f;
     [SerializeField] private Slider _bloodSlider;
     [SerializeField] private ParticleSystem _explosionPS;
     [SerializeField] private float fspeed = 1f;
@@ -35,13 +35,13 @@ public class BossControl : MonoBehaviour
         var y_enemy = transform.position.y;
         var x_player = player.transform.position.x;
         var y_player = player.transform.position.y;
-        if ((x_player > leftBoundary && x_player < rightBoundary)) //trong vùng tuần tra
-        {
-            if (x_player < x_enemy)
-                _isMovingRight = true;
-            if (x_player > x_enemy)
-                _isMovingRight = false;
-        }
+        //if ((x_player > leftBoundary && x_player < rightBoundary)) //trong vùng tuần tra
+        //{
+        //    if (x_player < x_enemy)
+        //        _isMovingRight = true;
+        //    if (x_player > x_enemy)
+        //        _isMovingRight = false;
+        //}
         //lấy vị trí của quái vật
         var currentPostion = transform.localPosition;
         if (currentPostion.x > rightBoundary)
