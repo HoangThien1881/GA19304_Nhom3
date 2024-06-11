@@ -4,8 +4,8 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using System.Threading;
+using System.Transactions;
 public class PlayerController : MonoBehaviour
 {
     Vector2 moveInput;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public float dodgeDirection = 0.5f; // Thời gian dodge
     private float dodgeTime; // Thời gian còn lại của dodge
     private bool isDodging = false; // Trạng thái dodge (đang dodge hay không)
-    //[SerializeField] private bool isMovingRight = true;
+    [SerializeField] private bool isMovingRight = true;
 
     public GameObject arrowPrefab; // Prefab của mũi tên
     public Transform bowPosition; // Vị trí cung để sinh ra mũi tên
@@ -40,25 +40,16 @@ public class PlayerController : MonoBehaviour
     private static int _score = 0;
     [SerializeField] private AudioClip _coinCollectSFX;
 
-
-   
-    public int health = 2
-        ;
-    public Image[] hearts;
-    public Sprite fullHeart;
-   
-
-    public Sprite emptyHeart;
+    [SerializeField] TextMeshProUGUI Mautext;
+    public int M = 1;
+    public static float Mau = 3;
 
 
-    public GameObject dead;
-    public GameObject pauseMenuScreen;
 
 
-    [SerializeField] TextMeshProUGUI __scoreText;
-    public int vv = 0;
-    private static int __score = 0;
-    [SerializeField] private AudioClip __coinCollectSFX;
+
+
+
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -67,7 +58,7 @@ public class PlayerController : MonoBehaviour
         gravityScaleAtStart = _rigidbody2D.gravityScale;
         _boxCollider2D = GetComponent<BoxCollider2D>();
         _scoreText.text = _score.ToString();
-        __scoreText.text = __score.ToString();
+        Mautext.text = Mau.ToString();
     }
     void Update()
     {
@@ -77,17 +68,9 @@ public class PlayerController : MonoBehaviour
         //Fire();
         Shoot();
         Dodge();
-        //dead();
-        foreach(Image img in hearts)
-        {
-            img.sprite = emptyHeart;
-        }
-        for(int i = 0; i < health; i++)
-        {
-            hearts[i].sprite = fullHeart;
-        }
-        GetHurt();
-       
+        
+
+
     }
     void OnMove(InputValue value)
     {
@@ -247,60 +230,26 @@ public class PlayerController : MonoBehaviour
             // cộng điểm 
             _score += v;
             _scoreText.text = _score.ToString();
-            __score += vv;
-            __scoreText.text = __score.ToString();
-
 
         }
-        if (other.gameObject.CompareTag("Monster")  || other.gameObject.CompareTag("Trap"))
-        {
-            health--;
-            if (health < 0)
-            {
-
-                gameObject.SetActive(false);
-                dead.SetActive(true);
-            }
-            else
-            {
-                StartCoroutine(GetHurt());
-            }
-        }
-
-
-    }
-    //void dead()
-    //{
-    //    var isTouchingEnemy = _capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Monster","Trap"));
-    //    if(isTouchingEnemy)
-    //    {
-    //        isAlive = false;
-    //        _animator.SetTrigger("Dying");
-    //        _rigidbody2D.velocity = new Vector2(0, 0);
-    //    }
-    //}
-    
-    IEnumerator GetHurt()
-    {
-        Physics2D.IgnoreLayerCollision(6, 8);
-        yield return new WaitForSeconds(5);
-        Physics2D.IgnoreLayerCollision(6,8,false);
-    }
-    public void pauseGame()
-    {
-        Time.timeScale = 0;
-        pauseMenuScreen.SetActive(true);
         
+        
+
+
     }
-    public void resumeGame()
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        Time.timeScale = 1;
-        pauseMenuScreen.SetActive(false);
+        if (other.gameObject.CompareTag("Quai"))
+        {
+            Mau -= M;
+            Mautext.text = Mau.ToString();
+        }
+        if (Mau <= 0)
+        {
+            Destroy(this.gameObject);
+
+        }
     }
-    public void GotoMenu()
-    {
-        SceneManager.LoadScene("Menu");
-        Time.timeScale = 1;
-    }
-    
+
+
 }
