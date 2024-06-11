@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using Cinemachine;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,7 +10,7 @@ using UnityEngine.SceneManagement;
 // tên file: viết hoa chữ cái đầu của từng từ
 // tên file == tên class
 // tên file ko có dấu cách, ko có ký tự đặc biệt, ko có số
-public class PlayerControls : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     // vận tốc chuyển động 
     // public, private, protected, internal, protected internal
@@ -268,4 +269,3 @@ public class PlayerControls : MonoBehaviour
         return _score;
     }
 }
-
