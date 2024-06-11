@@ -43,4 +43,17 @@ public class Quai : MonoBehaviour
         }
         transform.localScale = scale;
     }
+    public GameObject gameoverObiect;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            collision.gameObject.SetActive(false);
+            gameoverObiect.SetActive(true);
+        }
+        
+    }
+
+
 }
