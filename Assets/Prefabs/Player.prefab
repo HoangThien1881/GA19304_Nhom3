@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1125105033
-  m_SortingLayer: 6
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -55918692, guid: 6291ef7744bcdd2489bc3f2569759afa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -214,21 +214,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae642b6824d010345b79a523efba1626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
-  jumpSpeed: 15
-  climbSpeed: 5
-  dodgeSpeed: 4
-  dodgeDirection: 0.5
-  arrowPrefab: {fileID: 0}
-  bowPosition: {fileID: 0}
-  arrowSpeed: 10
-  arrowLifetime: 1
-  _scoreText: {fileID: 0}
-  v: 0
-  _coinCollectSFX: {fileID: 0}
-  health: 2
-  hearts: []
-  fullHeart: {fileID: 0}
-  emptyHeart: {fileID: 0}
-  dead: {fileID: 0}
-  pauseMenuScreen: {fileID: 0}
